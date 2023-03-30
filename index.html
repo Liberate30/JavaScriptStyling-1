@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        min-height: 100vh;
+        flex-direction: column;
+        gap: 100px;
+      }
+
+      .con {
+        border: 1px solid red;
+        width: fit-content;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 34px;
+        width: 80px;
+      }
+      .up,
+      .down {
+        display: block;
+        margin: 10px;
+      }
+
+      button {
+        padding: 6px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s;
+        position: absolute;
+      }
+
+      .up {
+        top: -42px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .left {
+        left: -100%;
+      }
+
+      .down {
+        bottom: -42px;
+        margin: 0 auto;
+      }
+
+      .right {
+        right: -110%;
+      }
+
+      .moveUp {
+        top: -100px;
+      }
+
+      .moveLeft {
+        left: -150px;
+      }
+
+      .moveRight {
+        right: -150px;
+      }
+
+      .moveDown {
+        bottom: -100px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <div class="con">
+      <button onclick="moveUp()" id="up" class="up">Up</button>
+      <button onclick="moveLeft()" id="left" class="left">Left</button>
+      <button onclick="reset()" id="reset" class="reset">Reset</button>
+      <button onclick="moveRight()" id="right" class="right">Right</button>
+      <button onclick="moveDown()" id="down" class="down">Down</button>
+    </div>
+
+    <script>
+      let outPut = document.getElementById("demo");
+      let textValue =
+        "Hello from JavaScript, this is to tell you that js is awesome.";
+
+      let i = 0;
+      setInterval(() => {
+        if(i > textValue.length - 1) return
+        outPut.innerHTML += textValue[i];
+        i += 1;
+      }, 100);
+
+      const upBtn = document.getElementById("up");
+      const leftBtn = document.getElementById("left");
+      const resetBtn = document.getElementById("reset");
+      const rightBtn = document.getElementById("right");
+      const downBtn = document.getElementById("down");
+
+      function moveUp() {
+        upBtn.classList.add("moveUp");
+      }
+      function moveLeft() {
+        leftBtn.classList.add("moveLeft");
+      }
+      function reset() {
+        upBtn.classList.remove("moveUp");
+        leftBtn.classList.remove("moveLeft");
+        rightBtn.classList.remove("moveRight");
+        downBtn.classList.remove("moveDown");
+      }
+      function moveRight() {
+        rightBtn.classList.add("moveRight");
+      }
+      function moveDown() {
+        downBtn.classList.add("moveDown");
+      }
+    </script>
+  </body>
+</html>
